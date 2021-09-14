@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+
+    <section class="ftco-section ftco-no-pb ftco-no-pt bg-light">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-5 p-md-5 img img-2 d-flex justify-content-center align-items-center" style="background-image:url({% static 'images/4.jpg' %});">
+					</div>
+					<div class="col-md-7 py-5 wrap-about pb-md-5 ftco-animate">
+	          <div class="heading-section-bold mb-4 mt-md-5">
+	          	<div class="ml-md-0">
+		            <h2 class="mb-4">RETASTE</h2>
+	            </div>
+	          </div>
+	          <div class="pb-md-5">
+	          	<p>Vous propose des produits 100% artisanaux élaborés avec  des ingrédients du territoire tunisien Nous expérimentons pour vous proposer des produits délicieux et qui font du bien à votre santé.</p>
+              <h2 class="mb-4">L’AIL NOIR, QU'EST-CE QUE C'EST ?</h2>
+              <p>L'ail noir est un ail classique confit ,après un trempage à l'eau de mer, à une température constante dans un milieu humide pendant plusieurs semaines. L’enveloppe prend alors une couleur écrue et les gousses celle de l’ébène. La consistance devient moelleuse et fondante. 
+                En se transformant, l’ail blanc perd totalement son odeur et son goût pour laisser place à une nouvelle saveur, très douce et très digeste.
+                </p>
+							<p><a href="/shop" class="btn btn-primary">Nos Produits</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+		
+		<section class="ftco-section testimony-section">
+      <div class="container">
+        <div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 heading-section ftco-animate text-center">
+            <h2 class="mb-4">Nos clients parlent de nous</h2>
+          </div>
+        </div>
+        <div class="row ftco-animate">
+          <div class="col-md-12">
+            <div class="carousel-testimony owl-carousel">
+              {% for testimonial in test %}
+              <div class="item">
+                <div class="testimony-wrap p-4 pb-5">
+                  <div class="user-img mb-5" style="background-image: url({{testimonial.image.url}})">
+                    <span class="quote d-flex align-items-center justify-content-center">
+                      <i class="icon-quote-left"></i>
+                    </span>
+                  </div>
+                  <div class="text text-center">
+                    <p class="mb-5 pl-4 line">{{ testimonial.detail }}</p>
+                    <p class="name">{{testimonial.name}}</p>
+                    
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+
+    
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ftco-section bg-light">
+			<div class="container">
+				<div class="row no-gutters ftco-services">
+          <div class="col-lg-3 text-center d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services mb-md-0 mb-4">
+              <div class="icon bg-color-1 active d-flex justify-content-center align-items-center mb-2">
+            		<span class="flaticon-shipped"></span>
+              </div>
+              <div class="media-body">
+                <h3 class="heading">Livraison Rapide</h3>
+                <span>livraison à domicile pour toute la tunisie</span>
+              </div>
+            </div>      
+          </div>
+          <div class="col-lg-3 text-center d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services mb-md-0 mb-4">
+              <div class="icon bg-color-2 d-flex justify-content-center align-items-center mb-2">
+            		<span class="flaticon-diet"></span>
+              </div>
+              <div class="media-body">
+                <h3 class="heading">100% Naturel</h3>
+                <span>Produits bien emballés</span>
+              </div>
+            </div>    
+          </div>
+          <div class="col-lg-3 text-center d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services mb-md-0 mb-4">
+              <div class="icon bg-color-3 d-flex justify-content-center align-items-center mb-2">
+            		<span class="flaticon-award"></span>
+              </div>
+              <div class="media-body">
+                <h3 class="heading">Qualité supérieure</h3>
+                <span>100% Tunisien</span>
+              </div>
+            </div>      
+          </div>
+          <div class="col-lg-3 text-center d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services mb-md-0 mb-4">
+              <div class="icon bg-color-4 d-flex justify-content-center align-items-center mb-2">
+            		<span class="flaticon-customer-service"></span>
+              </div>
+              <div class="media-body">
+                <h3 class="heading">Support</h3>
+                <span>24/7 Support</span>
+              </div>
+            </div>      
+          </div>
+        </div>
+			</div>
+		</section>
+    {% endblock %}

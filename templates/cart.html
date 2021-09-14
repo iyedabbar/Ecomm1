@@ -1,0 +1,264 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="hero-wrap hero-bread" style="background-image: url({% static 'images/6.jpg' %});">
+      <div class="container" >
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+            <h1 class="mb-0 bread">Panier</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% if cart %}
+    <section class="ftco-section ftco-cart">
+		<div class="container">
+			<div class="row">
+			<div class="col-md-12 ftco-animate">
+				<div class="cart-list">
+					<table class="table">
+						<thead class="thead-primary">
+						  <tr class="text-center">
+							<th>&nbsp;</th>
+							<th>&nbsp;</th>
+							<th>Produit</th>
+							<th>Prix unitaire(TND)</th>
+							<th>Quantité</th>
+							<th>Total(TND)</th>
+						  </tr>
+						</thead>
+						<tbody>
+							{% for item in cart %}
+
+						  <tr class="text-center">
+							<td class="product-remove"><a href="?remove_from_cart={{item.id}}"><span class="ion-ios-close"></span></a></td>
+							
+							<td class="image-prod"><div class="img" style="background-image:url(/media/{{item.product.image}});"></div></td>
+							
+							<td class="product-name">
+								<h3>{{item.product.title}}</h3>
+								
+							</td>
+							
+							<td class="price">{{item.product.price}}</td>
+							
+							<td >
+								<a href="?change_quantity={{ item.id }}&quantity=-1" style="font-size: 20px; margin-right: 15px;">-</a>
+                                   
+								{{item.quantity}}
+								 
+								 <a href="?change_quantity={{ item.id }}&quantity=1" style="font-size: 20px; margin-left: 15px;" >
+									+
+								</button>
+							  
+						  </td>
+							
+							<td class="total">{{item.total_price}}</td>
+						  </tr><!-- END TR-->
+
+						  {% endfor %}
+
+					
+						</tbody>
+					  </table>
+				  </div>
+			</div>
+		</div>
+    </section>
+		<section class="ftco-section">
+			<div class="container">
+			  <div class="row justify-content-center">
+				<div class="col-xl-5">
+					<div class="row mt-5 pt-3">
+						<div class="col-md-12 d-flex mb-5">
+							<div class="cart-detail cart-total p-3 p-md-4">
+								<h3 class="billing-heading mb-4">Votre commande</h3>
+								<p class="d-flex">
+										  <span>Sous-total</span>
+										  <span>{{ cart.get_total_cost }} TND </span>
+									  </p>
+									  <p class="d-flex">
+										  <span>Livraison</span>
+										  <span>7.00 TND </span>
+									  </p>
+									  <hr>
+									  <p class="d-flex total-price">
+										  <span>Total TTC</span>
+										  <span>{{ cart.get_total_cost_d }} TND</span>
+									  </p>
+									  </div>
+						</div>
+						<div class="col-md-12">
+							<div class="cart-detail p-3 p-md-4">
+								<h3 class="billing-heading mb-4">Mode de paiement</h3>
+										  <div class="form-group">
+											  <div class="col-md-12">
+												  <div class="radio">
+													 <label><input type="radio" name="optradio" class="mr-2" checked >Paiement à la livraison</label>
+												  </div>
+											  </div>
+										  </div>
+
+										
+									  </div>
+									  
+						</div>
+					</div>
+				</div>
+
+				<div class="col-xl-7 ftco-animate">
+					<form method="post" class="billing-form" id="payment-form">
+						{% csrf_token %}    
+
+						  <h3 class="mb-4 billing-heading">Facturation & Expédition</h3>
+				<div class="row align-items-end">
+					<div class="col-md-6">
+				  <div class="form-group field">
+					  <label>Prénom *</label>
+					  <div class="control">
+					<input type="text" class="form-control input" placeholder="" name="first_name" required>
+				</div>	
+				  </div>
+				</div>
+				<div class="col-md-6">
+				  <div class="form-group field">
+					  <label >Nom *</label>
+					  <div class="control">
+					<input type="text" class="form-control input" placeholder="" name="last_name" required>
+					</div>
+				  </div>
+			  </div>
+			  <div class="w-100"></div>
+				  <div class="col-md-12">
+					  <div class="form-group field">
+						  <label for="country">Pays *</label>
+						  <div class="select-wrap">
+						<div class="control">
+							<input type="text" class="form-control input" placeholder="" name="country" value="Tunisie" required>
+					</div>
+					  </div>
+					  </div>
+				  </div>
+				  <div class="w-100"></div>
+				  <div class="col-md-12">
+					  <div class="form-group field">
+					  <label >Adresse *</label>
+					  <div class="control">
+					<input type="text" class="form-control input" placeholder="" name="address" required>	
+					</div>
+				  </div>
+				  </div>
+				 
+				  <div class="w-100"></div>
+				  <div class="col-md-6">
+					  <div class="form-group field">
+					  <label for="towncity">Ville *</label>
+					  <div class="control">
+					<input type="text" class="form-control input" placeholder="" name="city" required>
+					</div>
+				  </div>
+				  </div>
+				  <div class="col-md-6">
+					  <div class="form-group field">
+						  <label >Code postal *</label>
+						  <div class="control">
+					<input type="text" class="form-control input" placeholder="" name="zipcode" required>
+					</div>
+				  </div>
+				  </div>
+				  <div class="w-100"></div>
+				  <div class="col-md-6">
+				  <div class="form-group field">
+					  <label for="phone">Téléphone *</label>
+					  <div class="control">
+					<input type="tel" class="form-control input" placeholder="" name="phone" pattern="[0-9]{8}" required>
+				</div>
+				  </div>
+				</div>
+				<div class="col-md-6">
+				  <div class=" form-group field">
+					  <label >E-mail *</label>
+					  <div class="control">
+					<input type="email" class="form-control input" placeholder="" name="email"   required >
+				</div>
+				  </div>
+			  </div>
+			  <div class="w-100"></div>
+			  </div>
+			  <div class="field">
+			  <div class="control">
+				<button class="btn btn-black py-3 px-5">Confirmer ma commande</button>
+			</div>
+			</div>
+			</form><!-- END -->
+						  </div>
+				
+			</div> <!-- .col-md-8 -->
+			  </div>
+			</div>
+		  </section> 
+
+		
+ 
+	{% else %}
+	<section class="ftco-section ftco-cart">
+		<div class="container">
+			<div class="row">
+			<div class="col-md-12 ftco-animate">
+				<div class="cart-list">
+					<table class="table">
+						<thead class="thead-primary">
+							<tr class="text-center">
+							  <th>&nbsp;</th>
+							  <th>&nbsp;</th>
+							  <th>Produit</th>
+							  <th>Prix unitaire(TND)</th>
+							  <th>Quantité</th>
+							  <th>Total(TND)</th>
+							</tr>
+						  </thead>
+						
+						<tbody>
+							
+
+						  <tr class="text-center">
+							<td class="product-remove"></td>
+							
+							<td class="image-prod"><div class="img" ></div></td>
+							
+							<td >
+								<h2 style = "font-size: 20px;"  >Votre Panier est Vide !<h2> <a href="/shop" style = "font-size: 15px;">Ajouter un Produit </a>
+								
+							</td>
+							
+							<td class="price"></td>
+							
+							<td >
+								<a href="?change_quantity={{ item.id }}&quantity=-1" style="font-size: 20px; margin-right: 15px;"></a>
+                                   
+							
+								 
+								 <a href="?change_quantity={{ item.id }}&quantity=1" style="font-size: 20px; margin-left: 15px;" >
+									
+								</button>
+							  
+						  </td>
+							
+							<td class="total"></td>
+						  </tr><!-- END TR-->
+
+						 
+
+					
+						</tbody>
+					  </table>
+				  </div>
+			</div>
+		</div>
+    </section>
+    {% endif %}
+    
+{% endblock %}
+

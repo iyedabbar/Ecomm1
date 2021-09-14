@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+  
+
+    <section class="ftco-section ftco-degree-bg">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 ftco-animate">
+						<h2 class="mb-3">{{Post.title}}</h2>
+            
+              <img src="{{Post.thumnail.url}}" alt="" class="img-fluid">
+            </p>
+            <p>{{Post.overview}}/p>
+              <div id="fb-root"></div>
+              <script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v11.0" nonce="yQf3zD6v"></script>
+              <div class="fb-like" data-href="http://127.0.0.1:8000/blog_detail/1/" data-width="" data-layout="standard" data-action="like" data-size="large" data-share="true"  style="margin-top: 15px;"  ></div>      
+              <div class="fb-comments" data-href="http://127.0.0.1:8000/blog_detail/1" data-width="" data-numposts="3"></div>
+              
+           </div>
+          <!-- .col-md-8 -->
+          <div class="col-lg-4 sidebar ftco-animate">
+          
+            <div class="sidebar-box ftco-animate">
+              <h3 class="heading">Articles les plus récents</h3>
+
+              {% for obj in last %}
+
+              <div class="block-21 mb-4 d-flex">
+                <a class="blog-img mr-4" style="background-image: url({{obj.thumnail.url}});"></a>
+                <div class="text">
+                  <h3 class="heading-1"><a href="{{obj.get_absolute_url}}">{{ obj.title }}</a></h3>
+                  <div class="meta">
+                    <div><a href="#"><span class="icon-calendar"></span>{{obj.date_added}}</a></div>
+                    <div><a href="#"><span class="icon-person"></span> Retaste</a></div>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}  
+              
+              
+            </div>
+            
+        
+
+            
+          </div>
+
+        </div>
+      </div>
+    </section> 
+
+  {% endblock content %}
+  

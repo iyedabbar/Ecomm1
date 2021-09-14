@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+  
+
+    <!-- END nav -->
+
+    <div class="hero-wrap hero-bread" style="background-image: url({% static 'images/1.jpg' %});">
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+          	<p class="breadcrumbs"><span class="mr-2"><a href="index.html"></a></span> <span></span></p>
+            <h1 class="mb-0 bread">Nos Produits</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="ftco-section">
+		<div class="container">
+    	
+    		<div class="row">
+    			
+				{% for product in data %}
+    			<div class="col-md-6 col-lg-3 ftco-animate">
+	
+    				<div class="product">
+    					<a href="/product/{{product.slug}}/{{product.id}}" class="img-prod"><img class="img-fluid" src="/media/{{product.image}}" alt="Colorlib Template">
+    						<div class="overlay"></div>
+    					</a>
+    					<div class="text py-3 pb-4 px-3 text-center">
+    						<h3><a href="/product/{{product.slug}}/{{product.id}}">{{product.title}}</a></h3>
+    						<div class="d-flex">
+    							<div class="pricing">
+		    						<p class="price"><span class="price-sale"> {{product.price}} DT</span></p>
+		    					</div>
+	    					</div>
+							<div class="bottom-area d-flex px-3">
+	    						<div class="m-auto d-flex">
+                    <form method="post" >
+                      {% csrf_token %}
+                      <div class="control">
+                        <input type="hidden" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="100">
+                        <input type="hidden" name="prod_id" value="{{product.id}}">
+                      </div>
+
+                      <div class="control">
+	    							<button id="buy_it" class=" d-flex justify-content-center align-items-center mx-1">
+	    								<span><i class="ion-ios-cart"></i></span>
+                    </button>
+                  </div>
+                  </form>
+	    						
+    							</div>
+    						</div>
+    					</div>
+    				</div>
+						
+    			</div>
+
+				{% endfor %}
+				
+				
+			
+    			
+
+    			
+    		
+       				 {% if messages %}
+							{% for message in messages %}
+								<div class="notification is-success is-toast">{{ message }}</div>
+							{% endfor %}
+						{% endif %}
+    			
+			</div>
+    		
+    		
+			<div class="row mt-5">
+				<div class="col text-center">
+				  <div class="block-27">
+					<ul>
+					  {% if posts.has_previous %}
+					  <li><a href="?page={{ posts.previous_page_number }}">&lt;</a></li>
+					  {% endif %}
+					  {% for p in posts.paginator.page_range %}
+					  {% if posts.number == p %}
+					  <li class="active"><a href="?page={{ p }}" class="page-link">{{ p }}</a></li>
+					  {% else %}
+					  <li> <a href="?page={{ p }}" class="page-link">{{ p }}</a></li>
+					  {% endif %} 
+					  {% endfor %}
+					  {% if posts.has_next %}
+					  <li><a href="?page={{ posts.next_page_number }}">&gt;</a></li>
+					  {% endif %}
+					</ul>
+				  </div>
+				</div>
+			  </div>
+    	</div>
+    </section>
+
+		<section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
+      <div class="container py-4">
+        <div class="row d-flex justify-content-center py-5">
+          <div class="col-md-6">
+          	<h2 style="font-size: 22px;" class="mb-0">Subcribe to our Newsletter</h2>
+          	<span>Get e-mail updates about our latest shops and special offers</span>
+          </div>
+          <div class="col-md-6 d-flex align-items-center">
+            <form action="#" class="subscribe-form">
+              <div class="form-group d-flex">
+                <input type="text" class="form-control" placeholder="Enter email address">
+                <input type="submit" value="Subscribe" class="submit px-3">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+	<style>
+	#buy_it{
+		background-color: #82ae46; /* Green */
+		border: none;
+		color: white;
+		font-size: 25px;
+		border-radius: 40px;
+	  }
+	</style>
+{% endblock content %}
+  

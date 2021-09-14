@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title> Invoice </title>
+    <style>
+      .clearfix:after {
+       content: "";
+       display: table;
+       clear: both;
+     }
+     
+     a {
+       color: #5D6975;
+       text-decoration: underline;
+     }
+     
+     body {
+       position: relative;
+       width: 21cm;  
+       height: 29.7cm; 
+       margin: 0 auto; 
+       color: #001028;
+       background: #FFFFFF; 
+       font-family: Arial, sans-serif; 
+       font-size: 12px; 
+       font-family: Arial;
+     }
+     
+     header {
+       padding: 10px 0;
+       margin-bottom: 30px;
+     }
+     
+     #logo {
+       text-align: center;
+       margin-bottom: 10px;
+     }
+     
+     #logo img {
+       width: 150px;
+     }
+     
+     h1 {
+       border-top: 1px solid  #5D6975;
+       border-bottom: 1px solid  #5D6975;
+       color: #5D6975;
+       font-size: 2.4em;
+       line-height: 1.4em;
+       font-weight: normal;
+       text-align: center;
+       margin: 0 0 20px 0;
+       background: url(dimension.png);
+     }
+     
+     #project {
+       float: left;
+     }
+     
+     #project span {
+       color: #5D6975;
+       text-align: right;
+       width: 52px;
+       margin-right: 10px;
+       display: inline-block;
+       font-size: 0.8em;
+     }
+     
+     #company {
+       float: right;
+       text-align: right;
+     }
+     
+     #project div,
+     #company div {
+       white-space: nowrap;        
+     }
+     
+     table {
+       width: 100%;
+       border-collapse: collapse;
+       border-spacing: 0;
+       margin-bottom: 20px;
+     }
+     
+     table tr:nth-child(2n-1) td {
+       background: #F5F5F5;
+     }
+     
+     table th,
+     table td {
+       text-align: center;
+     }
+     
+     table th {
+       padding: 5px 20px;
+       color: #5D6975;
+       border-bottom: 1px solid #C1CED9;
+       white-space: nowrap;        
+       font-weight: normal;
+     }
+     
+     table .service,
+     table .desc {
+       text-align: left;
+     }
+     
+     table td {
+       padding: 20px;
+       text-align: right;
+     }
+     
+     table td.service,
+     table td.desc {
+       vertical-align: top;
+     }
+     
+     table td.unit,
+     table td.qty,
+     table td.total {
+       font-size: 1.2em;
+     }
+     
+     table td.grand {
+       border-top: 1px solid #5D6975;;
+     }
+     
+     #notices .notice {
+       color: #5D6975;
+       font-size: 1.2em;
+     }
+     
+     footer {
+       color: #5D6975;
+       width: 100%;
+       height: 30px;
+       position: absolute;
+       bottom: 0;
+       border-top: 1px solid #C1CED9;
+       padding: 8px 0;
+       text-align: center;
+     }
+     </style>
+  </head>
+  
+  <body>
+    <header class="clearfix">
+      <div id="logo">
+        <img src="https://lh3.googleusercontent.com/LY_2tvP2uSB7mmJK9XFKKQGdsLqVAhXS2VYM4qPQmPz0OGhwqm0CYdaerxERRbGzK8oFod--WbUyHmTdaW1SKTC4Ubq58Nq5lB5apHEBaKOEYXzUTIiEfZXmYT2KSa0-2lArhFFwgMDYKT9w3ZVR2HHNb35ohZOHVsm-gdGfW-qmTKcThfw0FleH5AmeXXrJ9tSK79PXLg7zyW-GXrm9F1ns_WWPmhtYA62eHQLdwfoabdM5n9efBO1xtTRrGg3zmznPztPyYXmlRDTShZqN8dgg3WSj5MHVHbgS-iMsbFFvZrgp8DbGPbw43T-wwJNPT7tislFaT_HvZLssEhJAZ1DBsS3YKvqmYIJSyq0IZHGCQ__-ngTAXVXzsANmKFWSvDa9oXjMbeY62o6TwD08a_2VtUr75wOJpjhZOabkXSC8IfbqF2dokvrUsmnejCs7ivlYrnrMFpETe-XUl7_JaPnIvPe5K118BFksZZ1fkEmXCMxJRCXLKSBrOtrG323-wTKyFf2E4XKMdusfeSCX1RVv1jC4Qnnkm5iQpyjX1nFC9gdH6j_4jK3iQkaZiCAbV4z38YhouAvke_DYfrWLbvGYIzICTddvy3id3OlY2AmS2EN3eFsgbSaWvcsWGQRessvF9ehWqM4CoC2oULytjXibi0NsQt4X7OCcQqcgAQ_fXxxe510qh57xBq2xFu6pn4_s3OQ0fhvk-pFvBpj4rN5S=s657-no?authuser=0">
+      </div>
+      <h1>COMMANDE N°{{ order.id }} </h1>
+      <div id="company" class="clearfix">
+        <div>Retaste</div>
+        <div>Rue sidi Mansour klm 5,<br />cité Wefa N°6 Sfax, 3064</div>
+        <div>+216 58 697 418</div>
+        <div><a href="#">retaste.tn@gmail.com</a></div>
+      </div>
+      <div id="project">
+        <div><span>CLIENT :</span> {{ order.first_name }} {{ order.last_name }}</div>
+        <div><span>ADRESSE :</span> {{ order.address }} </div>
+        <div><span>Ville :</span> {{ order.zipcode }} {{ order.city }} </div>
+        <div><span>EMAIL :</span> <a href="#">{{ order.email }}</a></div>
+        <div><span>Tél :</span> <a href="#">{{ order.phone }}</a></div>
+        <div><span>MODE DE PAIEMENT :</span><p>    Paiement à la livraison</p> </div>
+        <div><span>DATE DU COMMANDE :</span>     <p>      {{order.created_at}}</p> </div>
+      </div>
+    </header>
+    <main>
+      <table>
+        <thead>
+          <tr>
+            <th class="service">Produit</th>
+            <th>Prix unitaire(TND)</th>
+            <th>Quantité</th>
+            <th>Total(TND)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in order.items.all %}
+          <tr>
+            <td class="service">{{ item.product.title }}</td>
+           
+            <td class="unit">{{ item.product.price }}</td>
+            <td class="qty">{{ item.quantity }}</td>
+            <td class="total">{{ item.get_total_price }}</td>
+          </tr>
+          {% endfor %}
+       
+          <tr>
+            <td colspan="4">Sous-total</td>
+            <td class="total">{{order.total}} TND</td>
+          </tr>
+          <tr>
+            <td colspan="4">Livraison</td>
+            <td class="total">7.00 TND</td>
+          </tr>
+          <tr>
+            <td colspan="4" class="grand total">Total TTC</td>
+            <td class="grand total">{{ order.amount_to_pay}} TND</td>
+          </tr>
+        </tbody>
+      </table>
+ 
+    </main>
+    <footer>
+    </footer>
+  </body>
+
+
+</html>

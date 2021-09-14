@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+    <div class="hero-wrap hero-bread" style="background-image: url({% static 'images/1.jpg' %});">
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+          	<p class="breadcrumbs"><span class="mr-2"><a href="index.html"></a></span> <span></span></p>
+            <h1 class="mb-0 bread">Blog</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+   
+    <section class="ftco-section ftco-degree-bg">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 ftco-animate">
+						<div class="row">
+              {% for obj in object_list %}  
+							<div class="col-md-12 d-flex ftco-animate">
+		            <div class="blog-entry align-self-stretch d-md-flex">
+                  <img class="card-img rounded-0" src="{{obj.thumnail.url}}" style="max-width: 50%;
+                  height: auto;">
+		              <div class="text d-block pl-md-4">
+		              	<div class="meta mb-3">
+		                  <div><a href="#">{{obj.date_added}}</a></div>
+		                  <div><a href="#">Retaste</a></div>
+		            
+		                </div>
+		                <h3 class="heading"><a href="{{obj.get_absolute_url}}">{{ obj.title }}</a></h3>
+		                <p> {{ obj.overview|safe| linebreaks | truncatewords:"50" }}</p>
+		                <p><a href="{{obj.get_absolute_url}}" class="btn btn-primary py-2 px-3">Lire la suite...</a></p>
+		              </div>
+		            </div>
+		          </div>
+		        
+		          
+              {% endfor %}    
+		          
+		          
+						</div>
+          </div> <!-- .col-md-8 -->
+          <div class="col-lg-4 sidebar ftco-animate">
+            <div class="sidebar-box">
+              <form  action="/search" class="search-form">
+                <div class="form-group">
+                  <span class="icon ion-ios-search"></span>
+                  <input name = "q" type="text" class="form-control" placeholder="Recherche...">
+                </div>
+              </form>
+            </div>
+            
+
+            <div class="sidebar-box ftco-animate">
+              <h3 class="heading">Articles les plus récents</h3>
+
+              {% for obj in last %}
+
+              <div class="block-21 mb-4 d-flex">
+                <a class="blog-img mr-4" style="background-image: url({{obj.thumnail.url}});"></a>
+                <div class="text">
+                  <h3 class="heading-1"><a href="{{obj.get_absolute_url}}">{{ obj.title }}</a></h3>
+                  <div class="meta">
+                    <div><a href="#"><span class="icon-calendar"></span>{{obj.date_added}}</a></div>
+                    <div><a href="#"><span class="icon-person"></span> Retaste</a></div>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}  
+              
+            </div>
+
+           
+
+            
+          </div>
+
+        </div>
+      
+      <div class="row mt-5">
+        <div class="col text-center">
+          <div class="block-27">
+            <ul>
+              {% if posts.has_previous %}
+              <li><a href="?page={{ posts.previous_page_number }}">&lt;</a></li>
+              {% endif %}
+              {% for p in posts.paginator.page_range %}
+              {% if posts.number == p %}
+              <li class="active"><a href="?page={{ p }}" class="page-link">{{ p }}</a></li>
+              {% else %}
+              <li> <a href="?page={{ p }}" class="page-link">{{ p }}</a></li>
+              {% endif %} 
+              {% endfor %}
+              {% if posts.has_next %}
+              <li><a href="?page={{ posts.next_page_number }}">&gt;</a></li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+   
+    </section> <!-- .section -->
+    {% endblock content %}
+  

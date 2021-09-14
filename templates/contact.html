@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+    <div class="hero-wrap hero-bread" style="background-image: url('images/bg_1.jpg');">
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+            <h1 class="mb-0 bread">Contact</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="ftco-section contact-section bg-light">
+      <div class="container">
+      	<div class="row d-flex mb-5 contact-info">
+          <div class="w-100"></div>
+          <div class="col-md-3 d-flex">
+          	<div class="info bg-white p-4">
+	            <p><span>Adresse:</span> Rue sidi Mansour klm 5, cité Wefa N°6 Sfax, 3064</p>
+	          </div>
+          </div>
+          <div class="col-md-3 d-flex">
+          	<div class="info bg-white p-4">
+	            <p><span>Tel/WhatsApp:</span> <a href="#">+216 58 697 418</a></p>
+	          </div>
+          </div>
+          <div class="col-md-3 d-flex">
+          	<div class="info bg-white p-4">
+	            <p><span>Email:</span> <a href="#">retaste.tn@gmail.com</a></p>
+	          </div>
+          </div>
+          <div class="col-md-3 d-flex">
+          	<div class="info bg-white p-4">
+	            <p><span>Website</span> <a href="#">yoursite.com</a></p>
+	          </div>
+          </div>
+        </div>
+        <div class="row block-9">
+          <div class="col-md-6 order-md-last d-flex">
+            <form method="post" class="bg-white p-5 contact-form">
+              {% csrf_token %}
+              <div class="form-group">
+                <input type="text" name="name" class="form-control" placeholder="Votre Nom et prénom" required>
+              </div>
+              <div class="form-group">
+                <input type="email" name="email" class="form-control" placeholder="Votre Email" required>
+              </div>
+              <div class="form-group">
+                <input type="text" name="subject" class="form-control" placeholder="Sujet" required >
+              </div>
+              <div class="form-group">
+                <textarea name="message" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+              </div>
+              <div class="form-group">
+                <input type="submit" value="Envoyer Message" class="btn btn-primary py-3 px-5">
+              </div>
+            </form>
+          
+          </div>
+
+          <div class="col-md-6 d-flex">
+  
+                          <iframe  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13110.227829747595!2d10.7981713!3d34.7667517!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4c573c6beebaaf63!2sSTE%20HAJJI%20FOOD!5e0!3m2!1sen!2stn!4v1631452823355!5m2!1sen!2stn" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                       </div>
+                  </div>
+              </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    {% if messages %}
+    {% for message in messages %}
+      <div class="notification is-success is-toast">{{message }}</div>
+    {% endfor %}
+  {% endif %}
+
+{% endblock %}    
