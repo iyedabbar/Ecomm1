@@ -42,6 +42,7 @@ class blog(models.Model):
 
     class Meta:
         ordering = ['-id']
+        verbose_name_plural= '4. Blogs'
     
     def get_absolute_url(self):
         return reverse('blog-detail', kwargs={
@@ -64,10 +65,11 @@ class Order(models.Model):
 
 
     class Meta:
+        verbose_name_plural= '2. Orders'
         ordering = ['-created_at']
     
     def __str__(self):
-        return self.first_name
+        return 'Order N°'+str(self.id) +' / '+ 'Client: '+ self.first_name + ' ' + self.last_name
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
@@ -76,10 +78,13 @@ class OrderItem(models.Model):
     quantity = models.IntegerField(default=1)
     
     def __str__(self):
-        return '%s' % self.id
+        return 'Order N°'+str(self.order.id) +' / '+ 'Client: '+ str(self.order.first_name) + ' ' + str(self.order.last_name)
     
     def get_total_price(self):
         return self.price * self.quantity
+    
+    class Meta:
+        verbose_name_plural= '3. Order Items'
 
 
 class Contact (models.Model):
@@ -87,7 +92,10 @@ class Contact (models.Model):
     name = models.CharField(max_length=50)
     email = models.EmailField()
     subject = models.CharField(max_length=50)
+
     
+    class Meta:
+        verbose_name_plural= '5. Contacts'
   
     def __str__(self):
         return self.name
@@ -99,6 +107,9 @@ class subcriber (models.Model):
     def __str__(self):
         return self.email
 
+    class Meta:
+        verbose_name_plural= '6. Subcribers'
+
 class testimonial(models.Model):
     name = models.CharField(max_length=64, blank=True, null=True, default=None)
     image = models.ImageField(upload_to="prod_img/") 
@@ -107,6 +118,19 @@ class testimonial(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name_plural= '7. Testimonials'
 
 
 
+
+class banner(models.Model):
+    image = models.ImageField(upload_to="prod_img/") 
+    title_1 = models.CharField(max_length=600)
+    title_2 = models.CharField(max_length=600)
+
+    def __str__(self):
+        return self.title_1
+
+    class Meta:
+        verbose_name_plural= '8. Banners'

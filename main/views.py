@@ -9,6 +9,7 @@ from .utilities import checkout,notify_customer
 
 
 def home(request):
+	data_1= banner.objects.all()
 	data = Product.objects.filter(is_featured =True).order_by('-id')
 	test = testimonial.objects.all()
 	cart = Cart(request)
@@ -32,7 +33,7 @@ def home(request):
 		messages.success(request, 'Produit ajouter au Panier')
 		return redirect('/')
 	else:
-		return render(request,'index.html',{'data':data, 'form': form , 'test' :test } )
+		return render(request,'index.html',{'data':data, 'form': form , 'test' :test , 'data_1':data_1 } )
 
 
 def product(request,slug,id):

@@ -8,8 +8,17 @@ class ProductAdmin(admin.ModelAdmin):
 admin.site.register(Product,ProductAdmin)
 admin.site.register(blog)
 admin.site.register(Order)
-admin.site.register(OrderItem)
+
+class ProductInOrderAdmin (admin.ModelAdmin):
+    list_display = [field.name for field in OrderItem._meta.fields]
+
+    class Meta:
+        model = OrderItem
+
+admin.site.register(OrderItem, ProductInOrderAdmin)
+
 admin.site.register(subcriber)
 admin.site.register(Contact)
 admin.site.register(testimonial)
+admin.site.register(banner)
 
