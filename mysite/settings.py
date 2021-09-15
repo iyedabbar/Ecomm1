@@ -47,7 +47,6 @@ DEFAULT_EMAIL_FROM = 'Retaste <abariyad01@gmail.com>'
 # Application definition
 
 INSTALLED_APPS = [
-    'jet',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
