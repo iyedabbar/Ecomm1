@@ -4,6 +4,28 @@
  * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+ 
+ #mobile{
+  background-image: url("../images/logo\ RETASTE-01.png");
+  background-size: 80%;
+  background-repeat: no-repeat;
+  width:160px;
+  height:110px;
+  margin-left:5px;
+}
+
+@media (max-width: 991.98px){
+  #mobile{ 
+    background-image: url("../images/RETASTE_LOGOS-11.png");
+    background-size: 88%;
+    background-repeat: no-repeat;
+    width:160px;
+    height:110px;
+    margin-left:5px;
+     }
+  }
+
+
 :root {
   --blue: #007bff;
   --indigo: #6610f2;

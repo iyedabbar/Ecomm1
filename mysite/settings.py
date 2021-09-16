@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-et_v5!%x$xzki_7*8cc@0%f^uarl9)+7jbj!d*o@h_$q101$s2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['52.14.202.159','127.0.0.1','ec2-52-14-202-159.us-east-2.compute.amazonaws.com']
 
@@ -47,6 +50,7 @@ DEFAULT_EMAIL_FROM = 'Retaste <abariyad01@gmail.com>'
 # Application definition
 
 INSTALLED_APPS = [
+    'jet',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -93,11 +97,15 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+DATABASES={
+   'default':{
+      'ENGINE':'django.db.backends.postgresql_psycopg2',
+      'NAME':'retastedb',
+      'USER':'retastetn',
+      'PASSWORD':'55879292',
+      'HOST':'retasteaws.c2wk59w6jv4i.us-east-2.rds.amazonaws.com',
+      'PORT':'5432',
+   }
 }
 
 
@@ -146,3 +154,16 @@ MEDIA_ROOT = os.path.join(VENV_PATH, 'media_root')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+cloudinary.config( 
+  cloud_name = "dvjyhxtyk", 
+  api_key = "386287566126413", 
+  api_secret = "eW2hY6q34cmBdvmq5zcVe3W_xLY" 
+)
+
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+    },
+}

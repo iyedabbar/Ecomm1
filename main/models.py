@@ -2,13 +2,11 @@ from django.db import models
 from django.utils.html import mark_safe
 from django.urls import reverse
 from  ckeditor.fields import RichTextField 
-
-
-
+from cloudinary.models import CloudinaryField
 
 class Product(models.Model):
     title = models.CharField(max_length=64, blank=True, null=True, default=None)
-    image = models.ImageField(upload_to="prod_img/") 
+    image = CloudinaryField('Products')
     slug = models.CharField(max_length=400)
     size = models.CharField(max_length=400)
     detail = models.TextField()
@@ -30,7 +28,7 @@ class blog(models.Model):
     title = models.CharField(max_length = 150)
     overview =  RichTextField()
     timestamp = models.DateTimeField(auto_now_add=True)
-    thumnail = models.ImageField(upload_to='blog')
+    thumnail = CloudinaryField('blog')
     date_added = models.DateField('date published',auto_now_add=True)
    
       
@@ -112,7 +110,7 @@ class subcriber (models.Model):
 
 class testimonial(models.Model):
     name = models.CharField(max_length=64, blank=True, null=True, default=None)
-    image = models.ImageField(upload_to="prod_img/") 
+    image = CloudinaryField('testimonials')
     detail = detail = models.TextField()
 
     def __str__(self):
@@ -125,7 +123,7 @@ class testimonial(models.Model):
 
 
 class banner(models.Model):
-    image = models.ImageField(upload_to="prod_img/") 
+    image = CloudinaryField('banners')
     title_1 = models.CharField(max_length=600)
     title_2 = models.CharField(max_length=600)
 

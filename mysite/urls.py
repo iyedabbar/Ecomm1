@@ -20,7 +20,8 @@ from django.conf.urls.static import static
 from main.views import *
 
 
-urlpatterns = [ path('retasteadmin/', admin.site.urls),
+urlpatterns = [ path('jet/', include('jet.urls', 'jet')),
+                path('retasteadmin/', admin.site.urls),
                 path( '', home),
                 path('home/', home),
                 path('shop/', shop),

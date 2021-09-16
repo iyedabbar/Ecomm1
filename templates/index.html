@@ -94,7 +94,7 @@
 						<div class="row">
 							<div class="col-md-6 order-md-last align-items-stretch d-flex">
 								<div class="category-wrap-2 ftco-animate img align-self-stretch d-flex" style="background-image: url({% static 'images/4.jpg' %});">
-									<div class="text text-center">
+									<div class="text text-center" id="to_hide">
 										<h2>Retaste</h2>
 										<p>Du Bon Qui Fait Du Bien</p>
 										<p><a href="#" class="btn btn-primary">Nos Produits</a></p>
@@ -141,7 +141,7 @@
 				{% for product in data %}
     			<div class="col-md-6 col-lg-3 ftco-animate">
     				<div class="product">
-    					<a href="/product/{{product.slug}}/{{product.id}}" class="img-prod"><img class="img-fluid" src="/media/{{product.image}}" alt="Colorlib Template">
+    					<a href="/product/{{product.slug}}/{{product.id}}" class="img-prod"><img class="img-fluid" src="{{product.image.url}}" alt="img">
     						<div class="overlay"></div>
     					</a>
     					<div class="text py-3 pb-4 px-3 text-center">
@@ -254,6 +254,11 @@
   color: white;
   font-size: 25px;
   border-radius: 40px;
+}
+@media (max-width: 767px) {
+#to_hide{ 
+ display: none;
+   }
 }
 </style>
 {% endblock content %}

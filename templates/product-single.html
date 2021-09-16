@@ -7,7 +7,7 @@
     	<div class="container">
     		<div class="row">
     			<div class="col-lg-6 mb-5 ftco-animate">
-    				<a href="/media/{{data.image}}" class="image-popup"><img src="/media/{{data.image}}" class="img-fluid" alt="Colorlib Template"></a>
+    				<a href="{{data.image.url}}" class="image-popup"><img src="{{data.image.url}}" class="img-fluid" alt="img"></a>
     			</div>
     			<div class="col-lg-6 product-details pl-md-5 ftco-animate">
     				<h3>{{data.title}}</h3>
@@ -75,7 +75,7 @@
     			{% for product in related %}
     			<div class="col-md-6 col-lg-3 ftco-animate">
     				<div class="product">
-    					<a href="/product/{{product.slug}}/{{product.id}}" class="img-prod"><img class="img-fluid" src="/media/{{data.image}}" alt="Colorlib Template">
+    					<a href="/product/{{product.slug}}/{{product.id}}" class="img-prod"><img class="img-fluid" src="{{data.image.url}}" alt="img">
     						<div class="overlay"></div>
     					</a>
     					<div class="text py-3 pb-4 px-3 text-center">
