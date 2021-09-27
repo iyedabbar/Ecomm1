@@ -1,10 +1,4 @@
-/*!
- * Bootstrap v4.2.1 (https://getbootstrap.com/)
- * Copyright 2011-2018 The Bootstrap Authors
- * Copyright 2011-2018 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
- 
+
  #mobile{
   background-image: url("../images/logo\ RETASTE-01.png");
   background-size: 80%;
@@ -3886,8 +3880,17 @@ input[type="button"].btn-block {
   padding: 1.25rem; }
 
 .card-img {
-  width: 100%;
+  width: 500px;
+  height: 300px;
   border-radius: calc(0.25rem - 1px); }
+
+@media (max-width: 991.98px){
+.card-img{
+  width: 500px;
+   }
+}
+
+
 
 .card-img-top {
   width: 100%;
