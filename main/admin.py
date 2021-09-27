@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import *
 
-admin.site.site_header = 'Retatse'
+admin.site.site_header = 'Retaste'
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('id' , 'title' , 'status' , 'is_featured' , 'price' , 'Product_image' )
     list_editable = ('status','is_featured')

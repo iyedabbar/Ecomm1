@@ -23,15 +23,19 @@ def notify_customer(order):
     html_tpl_path = 'invoice.html'
     context_data =  {'order': order}
     email_html_template = get_template(html_tpl_path).render(context_data)
-    receiver_email = order.email
+    receiver_email = order.email 
+    receiver_email_2 = 'retaste.tn@gmail.com' 
     
-    email_msg = EmailMessage('Welcome from django app', 
+    email_msg = EmailMessage('Commande/Retatse', 
                                 email_html_template, 
-                                settings. DEFAULT_EMAIL_FROM,
-                                [receiver_email],
+                                settings.DEFAULT_EMAIL_FROM,
+                                [receiver_email],[receiver_email_2],
+
                                 reply_to=[settings.DEFAULT_EMAIL_FROM]
                                 )
     email_msg.content_subtype = 'html'
     email_msg.send(fail_silently=False)
+
+
 
 

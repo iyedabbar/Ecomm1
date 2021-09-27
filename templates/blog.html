@@ -22,8 +22,8 @@
               {% for obj in object_list %}  
 							<div class="col-md-12 d-flex ftco-animate">
 		            <div class="blog-entry align-self-stretch d-md-flex">
-                  <img class="card-img rounded-0" src="{{obj.thumnail.url}}" style="max-width: 50%;
-                  height: auto;">
+                  <img class="card-img rounded-0" src="{{obj.thumnail.url}}" style="width: 500px;
+                  height: 300px;">
 		              <div class="text d-block pl-md-4">
 		              	<div class="meta mb-3">
 		                  <div><a href="#">{{obj.date_added}}</a></div>
@@ -31,7 +31,7 @@
 		            
 		                </div>
 		                <h3 class="heading"><a href="{{obj.get_absolute_url}}">{{ obj.title }}</a></h3>
-		                <p> {{ obj.overview|safe| linebreaks | truncatewords:"50" }}</p>
+		                <p> {{ obj.overview|safe| linebreaks | truncatewords:"30" }}</p>
 		                <p><a href="{{obj.get_absolute_url}}" class="btn btn-primary py-2 px-3">Lire la suite...</a></p>
 		              </div>
 		            </div>

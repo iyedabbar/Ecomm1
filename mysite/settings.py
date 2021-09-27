@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-et_v5!%x$xzki_7*8cc@0%f^uarl9)+7jbj!d*o@h_$q101$s2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['52.14.202.159','127.0.0.1','ec2-52-14-202-159.us-east-2.compute.amazonaws.com']
+ALLOWED_HOSTS = ['52.14.202.159','127.0.0.1','www.retastetn.com','retastetn.com']
 
 
 
@@ -40,11 +40,11 @@ CART_SESSION_ID = 'cart'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'abariyad01@gmail.com'
-EMAIL_HOST_PASSWORD = 'Iyed55879292'
+EMAIL_HOST_USER = 'retaste.tn@gmail.com'
+EMAIL_HOST_PASSWORD = '*0820*Etsater64'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-DEFAULT_EMAIL_FROM = 'Retaste <abariyad01@gmail.com>'
+DEFAULT_EMAIL_FROM = 'Retaste <retaste.tn@gmail.com>'
 
 
 # Application definition
@@ -99,7 +99,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES={
    'default':{
-      'ENGINE':'django.db.backends.postgresql_psycopg2',
+      'ENGINE':'django.db.backends.postgresql',
       'NAME':'retastedb',
       'USER':'retastetn',
       'PASSWORD':'55879292',
