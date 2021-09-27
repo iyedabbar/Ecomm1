@@ -3884,7 +3884,7 @@ input[type="button"].btn-block {
 
 @media (max-width: 991.98px){
 .card-img{
-  width: 500px;
+  width: 100%;
  }
 }
 
