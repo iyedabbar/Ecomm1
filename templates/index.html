@@ -8,14 +8,14 @@
     <section id="home-section" class="hero">
 		  <div class="home-slider owl-carousel">
         {% for banner in data_1 %}
-	      <div class="slider-item" style="background-image: url({{banner.image.url}});">
+	      <div class="slider-item" style="background-image: url({% static 'images/1.jpg' %});">
 	      	<div class="overlay"></div>
 	        <div class="container">
 	          <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
 
 	            <div class="col-md-12 ftco-animate text-center">
-	              <h1 class="mb-2">{{banner.title_1}}</h1>
-	              <h2 class="subheading mb-4">{{banner.title_2}}</h2>
+	              <h1 class="mb-2"></h1>
+	              <h2 class="subheading mb-4"></h2>
 	              <p><a href="/about" class="btn btn-primary">Retaste</a></p>
 	            </div>
 
